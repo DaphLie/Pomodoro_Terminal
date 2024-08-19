@@ -9,6 +9,5 @@ A simple pomodoro timer that runs in terminal
 Some improvements to be made in the future:
 - Make a better looking version
 - Create an option to restart the program
-- Solve the bug that makes the "FINISHED!!!" line appears two times in the screen
 > [!NOTE]
 > This was made with the help of [titanilham repository](https://github.com/titanilham/clock-module-in-console), so I recommend following their instructions on how to install some of the requirements. 
