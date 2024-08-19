@@ -6,6 +6,8 @@ from colorama import Fore, Back, Style
 import shutil
 import calendar 
 from plyer import notification
+import climage
+import timg
 
 class Timer:
     global_number = 0
@@ -15,12 +17,17 @@ class Timer:
         
         color = color.upper()
         min_intervalo_aux = min
-        
+        output = climage.convert("pomodoro.png")
+        #obj = timg.Renderer()                                                                                               
+        #obj.load_image_from_file("pomodoro_written.png")                                                                                
+        #obj.resize(100,60)
         if min > 0:
             min -= 1
             sec = 60 - sec
         while min > 0 or sec > 0:
             print(eval(f"Fore.{color}"))
+            #obj.render(timg.ASCIIMethod)
+            print(output)
             tprint(str(min) + " : " + str(sec))
             sec -= 1
             time.sleep(1)
@@ -37,7 +44,11 @@ class Timer:
         Timer.timer(0, min_aux, "WHITE", times, min_intervalo_aux)
     
     def timer(sec=0, min=25, color="MAGENTA", times = 2, min_intervalo = 5):
-        
+        #output = climage.convert("pomodoro.png")
+        obj = timg.Renderer()                                                                                               
+        obj.load_image_from_file("work.jpg")                                                                                
+        obj.resize(100,30)
+
         color = color.upper()
         min_aux = min
         Timer.global_number += 1
@@ -46,6 +57,8 @@ class Timer:
             sec = 60 - sec
         while min > 0 or sec > 0:
             print(eval(f"Fore.{color}"))
+            #print(output)
+            obj.render(timg.ASCIIMethod)
             tprint(str(min) + " : " + str(sec))
             tprint(str(Timer.global_number) + "/" + (str(times + Timer.global_number - 1)))
             sec -= 1
@@ -66,14 +79,15 @@ class Timer:
             time.sleep(3)
             Timer.intervalo(0, min_intervalo, "BLUE", times, min_aux)
         
-        tprint("FINISHED!!!")
-        notification.notify(
+        elif(times == 0):
+            tprint("FINISHED!!!")
+            notification.notify(
             title = "Clock", 
             message="All sessions ended")   
             
             
 if __name__ == "__main__":
-   min_sessao = int(input("Minutos de uma sessão: "))
-   min_intervalo = int(input("Minutos de um intervalo: "))
-   num_sessao = int(input("Número de sessões: "))
+   min_sessao = int(input("Minutes in a session: "))
+   min_intervalo = int(input("Minutes in a break: "))
+   num_sessao = int(input("Number of sessions: "))
    Timer.timer(0, min_sessao, "WHITE", num_sessao, min_intervalo)
