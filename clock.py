@@ -25,9 +25,9 @@ class Timer:
             min -= 1
             sec = 60 - sec
         while min > 0 or sec > 0:
-            print(eval(f"Fore.{color}"))
             #obj.render(timg.ASCIIMethod)
             print(output)
+            print(eval(f"Fore.{color}"))
             tprint(str(min) + " : " + str(sec))
             sec -= 1
             time.sleep(1)
@@ -46,8 +46,8 @@ class Timer:
     def timer(sec=0, min=25, color="MAGENTA", times = 2, min_intervalo = 5):
         #output = climage.convert("pomodoro.png")
         obj = timg.Renderer()                                                                                               
-        obj.load_image_from_file("work.jpg")                                                                                
-        obj.resize(100,30)
+        obj.load_image_from_file("actually.jpg")                                                                                
+        obj.resize(30,35)
 
         color = color.upper()
         min_aux = min
