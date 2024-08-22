@@ -2,9 +2,7 @@
 from art import *
 from datetime import datetime
 import time
-from colorama import Fore, Back, Style
-import shutil
-import calendar 
+from colorama import Fore, Back, Style 
 from plyer import notification
 import climage
 import timg
@@ -21,21 +19,21 @@ class Timer:
         #obj = timg.Renderer()                                                                                               
         #obj.load_image_from_file("pomodoro_written.png")                                                                                
         #obj.resize(100,60)
-        if min > 0:
-            min -= 1
-            sec = 60 - sec
-        while min > 0 or sec > 0:
+        #if min > 0:
+         #   min -= 1
+          #  sec = 60 - sec
+        while min > 0 or sec >= 0:
             #obj.render(timg.ASCIIMethod)
             print(output)
             print(eval(f"Fore.{color}"))
             tprint(str(min) + " : " + str(sec))
             sec -= 1
             time.sleep(1)
-            if(sec == 0):
+            if(sec < 0):
                 min -= 1
                 if(min < 0):
                     break 
-                sec = 60 - sec
+                sec = 58 - sec
             print("\033[H\033[J")
         notification.notify(
             title = "Clock", 
@@ -52,10 +50,10 @@ class Timer:
         color = color.upper()
         min_aux = min
         Timer.global_number += 1
-        if min > 0:
-            min -= 1
-            sec = 60 - sec
-        while min > 0 or sec > 0:
+        #if min > 0:
+            #min -= 1
+            #sec = 60 - sec
+        while min > 0 or sec >= 0:
             print(eval(f"Fore.{color}"))
             #print(output)
             obj.render(timg.ASCIIMethod)
@@ -63,12 +61,12 @@ class Timer:
             tprint(str(Timer.global_number) + "/" + (str(times + Timer.global_number - 1)))
             sec -= 1
             time.sleep(1)
-            if(sec == 0):
+            if(sec < 0):
                 min -= 1
                 if(min < 0):
                     times -= 1
                     break 
-                sec = 60 - sec
+                sec = 58 - sec
             print("\033[H\033[J")
         
         if(times > 0):
